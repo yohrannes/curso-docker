@@ -19,7 +19,7 @@ def index():
   data = requests.get('https://randomuser.me/api')
   return data.json()
 
-@app.route("/inserthost", methods=['POST'])
+@app.route("/inserthost", methods=['POST', 'GET'])
 def inserthost():
   data = requests.get('https://randomuser.me/api').json()
   username = data['results'][0]['name']['first']
