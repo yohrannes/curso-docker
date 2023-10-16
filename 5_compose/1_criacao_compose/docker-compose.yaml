@@ -1,7 +1,7 @@
 version: '3.3'
 
 services:
-  db: # Container de MySQL
+  db: # Container de MySQL com nome qualquer (db)
     image: mysql:5.7 # FROM mysql:5.7
     volumes:
       - db_data:/var/lib/mysql

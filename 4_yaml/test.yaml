@@ -32,7 +32,7 @@ lista_dois:
 
 obj: {a: 1, b: 2, c: 3, objeto_interno: {a: 1}}
 
-objeto:
+dicionario_de_dados:
   a: 1
   b: 2
   objeto_interno:

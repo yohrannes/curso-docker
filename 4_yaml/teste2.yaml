@@ -24,12 +24,12 @@ falso_dois: off
 
 obj: {a: 1, b: 2, c: 3}
 
-objeto:
+objetodois:
   a: 1
   b: 2
-  objeto:
-  a: 1
-  b: 3
+  objeto_interno:
+    a: 1
+    b: 3
 
 lista: [1, 2, 3, 4, 5]
 lista_dois:
