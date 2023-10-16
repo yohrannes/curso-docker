@@ -27,4 +27,4 @@ volumes:
   db_data: {}
 networks:
   backend:
-    driver: bridge
+    driver: bridge # Definindo o tipo de rede
