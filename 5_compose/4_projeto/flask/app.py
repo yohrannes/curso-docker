@@ -24,12 +24,24 @@ def inserthost():
   data = requests.get('https://randomuser.me/api').json()
   username = data['results'][0]['name']['first']
 
+#  try:
+    # Estabelece uma conexão com o banco de dados
+  mysql.init_app(app)
   cur = mysql.connection.cursor()
+  
+  # Executa a consulta de inserção
   cur.execute("""INSERT INTO users(name) VALUES(%s)""", (username,))
+  
+  # Confirma as alterações
   mysql.connection.commit()
+  
+  # Fecha o cursor
   cur.close()
-
+  
   return username
+#  except Exception as e:
+    # Trata qualquer exceção que possa ocorrer durante a conexão ou execução da consulta
+#    return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
-  app.run(host="0.0.0.0", debug=True, port="5000")
+  app.run(host="0.0.0.0", debug=True, port="8000")

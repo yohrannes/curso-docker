@@ -16,7 +16,7 @@ services:
       - db
     image: flaskcompose
     ports:
-      - "5000:5000"
+      - "8000:8000"
     restart: always
     networks:
       - dockercompose
