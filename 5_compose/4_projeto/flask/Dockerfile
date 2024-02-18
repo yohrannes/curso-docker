@@ -5,7 +5,7 @@ apt-get install -y python3-pip python3-dev
 
 WORKDIR /app
 
-RUN pip install Flask==2.3.3 requests flask_mysqldb
+RUN pip install Flask requests flask_mysqldb mysql-connector
 
 COPY . .
 

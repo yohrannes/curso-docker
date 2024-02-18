@@ -1,18 +1,12 @@
 import flask
-from flask import request, json, jsonify
+from flask import Flask, request, render_template, json, jsonify
 import requests
-import flask_mysqldb
-from flask_mysqldb import MySQL
+import mysql.connector
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 
-app.config['MYSQL_HOST'] = 'db'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'flaskdocker'
-
-mysql = MySQL(app)
+database=mysql.connector.connect(host='db',user='root',passwd='jamaica',database='flaskdocker')
 
 @app.route("/", methods=["GET"])
 def index():
@@ -24,16 +18,11 @@ def inserthost():
   data = requests.get('https://randomuser.me/api').json()
   username = data['results'][0]['name']['first']
 
-#  try:
-  mysql.init_app(app)
-  cur = mysql.connection.cursor()
-  cur.execute("""INSERT INTO users(name) VALUES(%s)""", (username,))
-  mysql.connection.commit()
-  cur.close()
-  
+  cursor=database.cursor()
+  cursor.execute("""INSERT INTO users(name) VALUES(%s)""", (username,))
+  database.commit()
+
   return username
-#  except Exception as e:
-#    return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
-  app.run(host="0.0.0.0", debug=True, port="8000")
+  app.run(host="0.0.0.0", debug=True, port="5000")
